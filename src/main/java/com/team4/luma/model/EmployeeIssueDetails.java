@@ -12,8 +12,8 @@ public class EmployeeIssueDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
+	private Long issue_id;
+
 	private Long employee_id;
 	
 	private Long item_id;
@@ -34,12 +34,12 @@ public class EmployeeIssueDetails {
 		this.return_date = return_date;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIssue_id() {
+		return issue_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIssue_id(Long issue_id) {
+		this.issue_id = issue_id;
 	}
 
 	public Long getEmployee_id() {
