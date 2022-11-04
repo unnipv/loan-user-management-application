@@ -14,7 +14,7 @@ public class EmployeeCardDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Long employee_id;
+	private String employee_id;
 	
 	private Long loan_id;
 	
@@ -24,18 +24,18 @@ public class EmployeeCardDetails {
 		super();
 	}
 
-	public EmployeeCardDetails(Long employee_id, Long loan_id, Date card_issue_date) {
+	public EmployeeCardDetails(String employee_id, Long loan_id, Date card_issue_date) {
 		super();
 		this.employee_id = employee_id;
 		this.loan_id = loan_id;
 		this.card_issue_date = card_issue_date;
 	}
 
-	public Long getEmployee_id() {
+	public String getEmployee_id() {
 		return employee_id;
 	}
 
-	public void setEmployee_id(Long employee_id) {
+	public void setEmployee_id(String employee_id) {
 		this.employee_id = employee_id;
 	}
 

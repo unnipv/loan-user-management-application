@@ -8,6 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name="loan_card_master")
 public class LoanCardEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

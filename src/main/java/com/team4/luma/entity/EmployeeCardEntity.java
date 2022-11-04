@@ -4,9 +4,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.team4.luma.model.EmployeeMaster;
-import com.team4.luma.model.LoanCardMaster;
-
 import lombok.Getter;
 import lombok.Setter;
 

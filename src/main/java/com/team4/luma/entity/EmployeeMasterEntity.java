@@ -3,6 +3,13 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@Table(name="employee_master")
 public class EmployeeMasterEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
