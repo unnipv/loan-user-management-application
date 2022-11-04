@@ -8,6 +8,7 @@ public class LumaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LumaApplication.class, args);
+		System.out.println("Started Project");
 	}
 
 }

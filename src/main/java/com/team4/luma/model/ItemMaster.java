@@ -11,7 +11,7 @@ public class ItemMaster {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long itemId;
 	
 	private String itemDescription;
 	
@@ -43,11 +43,11 @@ public class ItemMaster {
 
 
 	public Long getId() {
-		return id;
+		return itemId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.itemId = id;
 	}
 
 	public String getItemDescription() {
