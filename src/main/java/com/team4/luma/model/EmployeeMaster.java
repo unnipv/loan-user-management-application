@@ -3,26 +3,26 @@ package com.team4.luma.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class EmployeeMaster {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String employeeId;
 	
 	private String employeeName;
 	private String designation;
 	private String department;
-	private String employeePassword;
+	private String password;
 	private Character gender;
 	private Date dateOfBirth;
 	private Date dateOfJoining;
     
-    public String getEmployeeId() {
+    public EmployeeMaster() {
+		super();
+	}
+	public String getEmployeeId() {
 		return employeeId;
 	}
 	public void setEmployeeId(String employeeId) {
@@ -71,11 +71,12 @@ public class EmployeeMaster {
 				+ designation + ", department=" + department + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth
 				+ ", dateOfJoining=" + dateOfJoining + "]";
 	}
+	
 	public String getEmployeePassword() {
-		return employeePassword;
+		return this.password;
 	}
-	public void setEmployeePassword(String employeePassword) {
-		this.employeePassword = employeePassword;
+	public void setEmployeePassword(String password) {
+		this.password = password;
 	}
 	
 }

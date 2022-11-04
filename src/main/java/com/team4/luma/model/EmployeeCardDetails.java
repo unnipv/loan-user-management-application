@@ -3,11 +3,17 @@ package com.team4.luma.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class EmployeeCardDetails {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private Long employee_id;
 	
 	private Long loan_id;

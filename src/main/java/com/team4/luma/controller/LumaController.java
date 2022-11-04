@@ -1,6 +1,8 @@
 package com.team4.luma.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,9 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.team4.luma.dto.EmployeeDto;
 import com.team4.luma.dto.LoginDto;
+import com.team4.luma.service.EmployeeService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class LumaController {
+	
+	@Autowired 
+	private EmployeeService empService;
 	
 	@GetMapping("/test")
 	public String test() {
@@ -20,26 +27,41 @@ public class LumaController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> employeeRegistration(@RequestBody EmployeeDto employeeDto){
-		return new ResponseEntity<String>("employee added", null, 201);
+		
+		try{
+			empService.registerUserToDb(employeeDto);
+			return new ResponseEntity<String>("employee added", null, 201);
+		}
+		catch(Exception e) {
+			return new ResponseEntity<String>("Invalid employee details", null, 400);
+		}
+		
 	}
 	
 	@PostMapping("/login")
 	public ResponseEntity<String> employeeLogin(@RequestBody LoginDto loginDto){
-		return new ResponseEntity<String>("Login success", null, 200);
+		try{
+			empService.validateEmployee(loginDto);
+			return new ResponseEntity<String>("Login successful", null, 200);
+		}
+		catch(Exception e) {
+			return new ResponseEntity<String>("Invalid credentials", null, 400);
+		}
 	}
+	
 	
 	@PostMapping("/applyforloan")
 	public ResponseEntity<String> applyforloan(@RequestBody LoginDto loginDto){
 		return new ResponseEntity<String>("Loan sanctioned", null, 200);
 	}
 	
-	@GetMapping("/loans")
-	public ResponseEntity<String> getAllLoans(@RequestParam String empId){
+	@GetMapping("/loans/<employeeId>")
+	public ResponseEntity<String> getAllLoans(@RequestParam String employeeId){
 		return new ResponseEntity<String>("Loan sanctioned", null, 200);
 	}
 	
-	@GetMapping("/items")
-	public ResponseEntity<String> getAllItemsPurchased(@RequestParam String empId){
+	@GetMapping("/items/<employeeId>")
+	public ResponseEntity<String> getAllItemsPurchased(@RequestParam String employeeId){
 		return new ResponseEntity<String>("Loan sanctioned", null, 200);
 	}
 }
