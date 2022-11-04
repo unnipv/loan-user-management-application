@@ -1,5 +1,6 @@
 package com.team4.luma.entity;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -12,7 +13,6 @@ import lombok.Setter;
 @Table(name="employee_master")
 public class EmployeeMasterEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "employee_id")
     private String employee_id;
 	
@@ -33,4 +33,13 @@ public class EmployeeMasterEntity {
 	
 	@Column(name = "date_of_joining")
     private Date date_of_joining;
+	
+	@Column(name = "password")
+	private String password;
+	
+	@OneToMany(mappedBy="id")
+    private Set<EmployeeCardEntity> loanCards;
+	
+	@OneToMany(mappedBy="issue_id")
+    private Set<EmployeeIssueEntity> items;
 }

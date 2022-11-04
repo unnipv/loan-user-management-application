@@ -1,5 +1,7 @@
 package com.team4.luma.entity;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import lombok.Getter;
@@ -20,4 +22,5 @@ public class LoanCardEntity {
 	
 	@Column(name = "duration_in_years")
     private int duration_in_years;
+
 }
