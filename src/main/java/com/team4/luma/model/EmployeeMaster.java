@@ -6,13 +6,14 @@ import javax.persistence.Entity;
 
 @Entity
 public class EmployeeMaster {
-	String employeeId;
-	String employeeName;
-    String designation;
-	String department;
-    Character gender;
-    Date dateOfBirth;
-    Date dateOfJoining;
+	private String employeeId;
+	private String employeeName;
+	private String designation;
+	private String department;
+	private String employeePassword;
+	private Character gender;
+	private Date dateOfBirth;
+	private Date dateOfJoining;
     
     public String getEmployeeId() {
 		return employeeId;
@@ -62,6 +63,12 @@ public class EmployeeMaster {
 		return "EmployeeMaster [employeeId=" + employeeId + ", employeeName=" + employeeName + ", designation="
 				+ designation + ", department=" + department + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth
 				+ ", dateOfJoining=" + dateOfJoining + "]";
+	}
+	public String getEmployeePassword() {
+		return employeePassword;
+	}
+	public void setEmployeePassword(String employeePassword) {
+		this.employeePassword = employeePassword;
 	}
 	
 }
