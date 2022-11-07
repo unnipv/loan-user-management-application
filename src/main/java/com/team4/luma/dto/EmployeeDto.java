@@ -8,7 +8,7 @@ public class EmployeeDto {
 	private String designation;
 	private String department;
 	private String password;
-	private Character gender;
+	private String gender;
 	private Date dateOfBirth;
 	private Date dateOfJoining;
 	public String getEmployeeId() {
@@ -41,10 +41,10 @@ public class EmployeeDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Character getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Character gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public Date getDateOfBirth() {

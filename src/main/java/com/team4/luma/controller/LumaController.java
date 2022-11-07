@@ -3,21 +3,25 @@ package com.team4.luma.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team4.luma.dto.EmployeeDto;
+import com.team4.luma.dto.ItemListDto;
+import com.team4.luma.dto.LoansListDto;
 import com.team4.luma.dto.LoginDto;
 import com.team4.luma.entity.ItemEntity;
 import com.team4.luma.service.EmployeeService;
+import com.team4.luma.service.ItemService;
+import com.team4.luma.service.LoanService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -26,6 +30,13 @@ public class LumaController {
 	
 	@Autowired 
 	private EmployeeService empService;
+	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private LoanService loanService;
+	
 	
 	@GetMapping("/test")
 	public String test() {
@@ -62,28 +73,44 @@ public class LumaController {
 		return new ResponseEntity<String>("Loan sanctioned", null, 200);
 	}
 	
+	
 	@GetMapping("/loans/{employeeId}")
-	public ResponseEntity<String> getAllLoans(@PathParam(value = "employeeId") String employeeId){
-		return new ResponseEntity<String>("Loan sanctioned", null, 200);
+	public List<LoansListDto> getAllLoans(@PathVariable(value = "employeeId") String employeeId){
+		try{
+			List<LoansListDto> loans = loanService.getLoansByEmpId(employeeId);
+			return loans;
+		}
+		catch(Exception e) {
+			return new ArrayList<>();
+		}
+
 	}
 	
 	@GetMapping("/items/{employeeId}")
-	public ResponseEntity<String> getAllItemsPurchased(@PathParam(value = "employeeId") String employeeId){
-		return new ResponseEntity<String>("Loan sanctioned", null, 200);
+	public List<ItemListDto> getAllItemsPurchased(@PathVariable(value = "employeeId") String employeeId){
+		try{
+			List<ItemListDto> items = itemService.getItemsByEmpId(employeeId);
+			return items;
+		}
+		catch(Exception e) {
+			return new ArrayList<>();
+		}
 	}
+	
 	
 	@GetMapping("/item_category")
 	public List<String> getAllItemCategories(){
-		return new ArrayList<>();
+		
+		return itemService.getAllCategories();
 	}
 	
 	@GetMapping("/item_make/{category}")
-	public List<String> getAllItemMakeType(@PathParam(value = "category") String category){
-		return new ArrayList<>();
+	public List<String> getAllItemMakeType(@PathVariable String category){
+		return itemService.getItemMakeByCategory(category);
 	}
 	
 	@GetMapping("/all_items/{category}/{make}")
-	public List<ItemEntity> getAllItemList(@PathParam(value = "category") String category, @PathParam("make") String make){
-		return new ArrayList<>();
+	public List<ItemEntity> getAllItemList(@PathVariable String category, @PathVariable String make){
+		return itemService.getItemByCategoryAndMake(category, make);
 	}
 }

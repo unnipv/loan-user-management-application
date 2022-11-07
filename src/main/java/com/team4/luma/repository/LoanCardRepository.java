@@ -1,6 +1,9 @@
 package com.team4.luma.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.team4.luma.entity.LoanCardEntity;
@@ -8,5 +11,9 @@ import com.team4.luma.entity.LoanCardEntity;
 
 @Repository
 public interface LoanCardRepository extends JpaRepository<LoanCardEntity, Long> {
+
+	@Query(nativeQuery = true, 
+			value ="Select l.loan_id, l.loan_type, l.duration_in_years, e.card_issue_date FROM loan_card_master l INNER JOIN employee_card_details e where e.employee_id = ?1 AND l.loan_id = e.loan_id")
+	List<List<String>> getLoansByEmpId(String employeeId);
 
 }

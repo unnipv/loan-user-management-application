@@ -1,22 +1,16 @@
-package com.team4.luma.entity;
+package com.team4.luma.dto;
+
+import java.util.Date;
 
 
-import javax.persistence.*;
+public class LoansListDto {
+	private Long loan_id;
 
-
-@Entity
-@Table(name="loan_card_master")
-public class LoanCardEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "loan_id")
-    private Long loan_id;
-	
-	@Column(name = "loan_type")
     private String loan_type;
-	
-	@Column(name = "duration_in_years")
+
     private int duration_in_years;
+    
+    private Date card_issue_date;
 
 	public Long getLoan_id() {
 		return loan_id;
@@ -41,7 +35,14 @@ public class LoanCardEntity {
 	public void setDuration_in_years(int duration_in_years) {
 		this.duration_in_years = duration_in_years;
 	}
-	
-	
 
+	public Date getCard_issue_date() {
+		return card_issue_date;
+	}
+
+	public void setCard_issue_date(Date card_issue_date) {
+		this.card_issue_date = card_issue_date;
+	}
+    
+    
 }

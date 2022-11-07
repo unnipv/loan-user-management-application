@@ -11,12 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 @Table(name="employee_issue_master")
 public class EmployeeIssueEntity {
 	@Id
@@ -37,4 +33,46 @@ public class EmployeeIssueEntity {
 	
 	@Column(name = "return_date")
     private Date return_date;
+
+	public Long getIssue_id() {
+		return issue_id;
+	}
+
+	public void setIssue_id(Long issue_id) {
+		this.issue_id = issue_id;
+	}
+
+	public EmployeeMasterEntity getEmployeeMasterEntity() {
+		return employeeMasterEntity;
+	}
+
+	public void setEmployeeMasterEntity(EmployeeMasterEntity employeeMasterEntity) {
+		this.employeeMasterEntity = employeeMasterEntity;
+	}
+
+	public ItemEntity getItemEntity() {
+		return itemEntity;
+	}
+
+	public void setItemEntity(ItemEntity itemEntity) {
+		this.itemEntity = itemEntity;
+	}
+
+	public Date getIssue_date() {
+		return issue_date;
+	}
+
+	public void setIssue_date(Date issue_date) {
+		this.issue_date = issue_date;
+	}
+
+	public Date getReturn_date() {
+		return return_date;
+	}
+
+	public void setReturn_date(Date return_date) {
+		this.return_date = return_date;
+	}
+	
+	
 }

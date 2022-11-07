@@ -4,12 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 @Table(name="employee_card_details")
 public class EmployeeCardEntity {
 	@Id
@@ -27,4 +23,38 @@ public class EmployeeCardEntity {
 	@ManyToOne
     @JoinColumn(name = "employee_id")
     private EmployeeMasterEntity employeeMasterEntity;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LoanCardEntity getLoanCardEntity() {
+		return loanCardEntity;
+	}
+
+	public void setLoanCardEntity(LoanCardEntity loanCardEntity) {
+		this.loanCardEntity = loanCardEntity;
+	}
+
+	public Date getCard_issue_date() {
+		return card_issue_date;
+	}
+
+	public void setCard_issue_date(Date card_issue_date) {
+		this.card_issue_date = card_issue_date;
+	}
+
+	public EmployeeMasterEntity getEmployeeMasterEntity() {
+		return employeeMasterEntity;
+	}
+
+	public void setEmployeeMasterEntity(EmployeeMasterEntity employeeMasterEntity) {
+		this.employeeMasterEntity = employeeMasterEntity;
+	}
+	
+	
 }
