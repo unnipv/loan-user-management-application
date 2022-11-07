@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import com.team4.luma.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.team4.luma.dto.EmployeeDto;
-import com.team4.luma.dto.ItemListDto;
-import com.team4.luma.dto.LoansListDto;
-import com.team4.luma.dto.LoginDto;
 import com.team4.luma.entity.ItemEntity;
 import com.team4.luma.service.EmployeeService;
 import com.team4.luma.service.ItemService;
@@ -36,8 +33,7 @@ public class LumaController {
 	
 	@Autowired
 	private LoanService loanService;
-	
-	
+
 	@GetMapping("/test")
 	public String test() {
 		return "Working";
@@ -69,8 +65,14 @@ public class LumaController {
 	
 	
 	@PostMapping("/applyforloan")
-	public ResponseEntity<String> applyforloan(@RequestBody LoginDto loginDto){
-		return new ResponseEntity<String>("Loan sanctioned", null, 200);
+	public ResponseEntity<String> applyforloan(@RequestBody ApplyLoanDto applyLoanDto){
+		try{
+			loanService.applyForLoan(applyLoanDto);
+			return new ResponseEntity<String>("Loan sanctioned", null, 200);
+		}
+		catch (Exception e){
+			return new ResponseEntity<String>("Error In Loan Creation", null, 400);
+		}
 	}
 	
 	

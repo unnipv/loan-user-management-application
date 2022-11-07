@@ -11,7 +11,7 @@ import com.team4.luma.entity.ItemEntity;
 
 @Repository
 public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
-	
+
 	@Query("SELECT DISTINCT i.item_category FROM ItemEntity i")
 	List<String> getDistictCategory();
 
@@ -25,4 +25,6 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
 			value = "select A.issue_id, B.item_make, B.item_category, B.item_valuation, B.item_description From employee_issue_master A INNER JOIN item_master B ON A.item_id = B.item_id WHERE A.employee_id = ?1")
 	List<List<String>> getItemsByEmpId(String employeeId);
 
+	@Query(nativeQuery = true, value= "SELECT * FROM ItemEntity i WHERE i.item_id = ?1")
+	ItemEntity getItemById(Long item_id);
 }
