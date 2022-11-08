@@ -2,7 +2,7 @@ package com.team4.luma.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import com.team4.luma.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +53,13 @@ public class LumaController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> employeeLogin(@RequestBody LoginDto loginDto){
+	public ResponseEntity<EmployeeDto> employeeLogin(@RequestBody LoginDto loginDto){
 		try{
-			empService.validateEmployee(loginDto);
-			return new ResponseEntity<String>("Login successful", null, 200);
+			Optional<EmployeeDto> employee = empService.validateEmployee(loginDto);
+			return new ResponseEntity<EmployeeDto>(employee.get(), null, 200);
 		}
 		catch(Exception e) {
-			return new ResponseEntity<String>("Invalid credentials", null, 400);
+			return new ResponseEntity<EmployeeDto>(null, null, 400);
 		}
 	}
 	

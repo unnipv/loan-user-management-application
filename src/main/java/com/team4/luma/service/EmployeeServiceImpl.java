@@ -8,6 +8,7 @@ import com.team4.luma.dto.EmployeeDto;
 import com.team4.luma.dto.LoginDto;
 import com.team4.luma.entity.EmployeeMasterEntity;
 import com.team4.luma.repository.EmployeeRepository;
+import com.team4.luma.utility.EmployeeDtoConverter;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -23,15 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			throw new Exception("User with Empid already exists!");
 		}
 		else {
-			EmployeeMasterEntity employee = new EmployeeMasterEntity();
-			employee.setEmployee_id(empDto.getEmployeeId());
-			employee.setEmployee_name(empDto.getEmployeeName());
-			employee.setPassword(empDto.getPassword());
-			employee.setDate_of_birth(empDto.getDateOfBirth());
-			employee.setDate_of_joining(empDto.getDateOfJoining());
-			employee.setDepartment(empDto.getDepartment());
-			employee.setDesignation(empDto.getDesignation());
-			employee.setGender(empDto.getGender());
+			EmployeeMasterEntity employee = EmployeeDtoConverter.getEmployeeEntity(empDto);
 			empRepo.save(employee);
 			empRepo.flush();
 		}
@@ -39,11 +32,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void validateEmployee(LoginDto loginDto) throws Exception {
+	public Optional<EmployeeDto> validateEmployee(LoginDto loginDto) throws Exception {
 		Optional<EmployeeMasterEntity> employee = empRepo.findById(loginDto.getEmployeeId());
 		if(employee.isPresent() && employee.get().getPassword().equals(loginDto.getPassword())) {
 			System.out.println("Login Success");
-			return;
+			return Optional.of(EmployeeDtoConverter.getEmployeeDto(employee.get()));
 		}
 		else {
 			System.out.println("Login Failed");

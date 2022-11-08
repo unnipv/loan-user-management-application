@@ -2,8 +2,6 @@ package com.team4.luma.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.Optional;
 import com.team4.luma.dto.ApplyLoanDto;
 import com.team4.luma.entity.*;
 import com.team4.luma.repository.*;
-import net.bytebuddy.build.Plugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
