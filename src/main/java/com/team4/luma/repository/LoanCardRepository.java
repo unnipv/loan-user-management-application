@@ -19,4 +19,8 @@ public interface LoanCardRepository extends JpaRepository<LoanCardEntity, Long> 
 
 	@Query(nativeQuery = true, value= "SELECT * FROM LoanCardEntity l WHERE l.loan_id = ?1")
 	LoanCardEntity getLoanById(Long loan_id);
+
+	@Query(nativeQuery = true,
+			value = "SELECT * FROM LoanCardEntity l where l.loan_type = ?1")
+	LoanCardEntity getLoansByItemCategory(String item_category);
 }
