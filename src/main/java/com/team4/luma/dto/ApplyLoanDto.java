@@ -28,4 +28,10 @@ public class ApplyLoanDto {
     public void setLoan_id(Long loan_id) {
         this.loan_id = loan_id;
     }
+
+	public ApplyLoanDto() {
+		super();
+	}
+    
+    
 }

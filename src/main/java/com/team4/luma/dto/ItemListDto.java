@@ -94,6 +94,7 @@ public class ItemListDto {
 		return "ItemListDto [issue_id=" + issue_id + ", item_description=" + item_description + ", item_make="
 				+ item_make + ", item_category=" + item_category + ", item_valuation=" + item_valuation + "]";
 	}
-    
+
+	
     
 }

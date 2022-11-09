@@ -43,6 +43,10 @@ public class LoansListDto {
 	public void setCard_issue_date(Date card_issue_date) {
 		this.card_issue_date = card_issue_date;
 	}
+
+	public LoansListDto() {
+		super();
+	}
     
     
 }

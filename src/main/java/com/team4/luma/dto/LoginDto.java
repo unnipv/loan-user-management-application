@@ -15,6 +15,13 @@ public class LoginDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "LoginDto [employeeId=" + employeeId + ", password=" + password + "]";
+	}
+	public LoginDto() {
+		super();
+	}
 	
 	
 }

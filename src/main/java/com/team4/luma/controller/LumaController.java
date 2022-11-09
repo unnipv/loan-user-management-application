@@ -55,6 +55,7 @@ public class LumaController {
 	@PostMapping("/login")
 	public ResponseEntity<EmployeeDto> employeeLogin(@RequestBody LoginDto loginDto){
 		try{
+			System.out.println(loginDto);
 			Optional<EmployeeDto> employee = empService.validateEmployee(loginDto);
 			return new ResponseEntity<EmployeeDto>(employee.get(), null, 200);
 		}

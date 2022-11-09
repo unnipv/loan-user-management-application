@@ -60,5 +60,21 @@ public class EmployeeDto {
 		this.dateOfJoining = dateOfJoining;
 	}
 	
+	public EmployeeDto() {
+		super();
+	}
+	public EmployeeDto(String employeeId, String employeeName, String designation, String department, String password,
+			String gender, Date dateOfBirth, Date dateOfJoining) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.designation = designation;
+		this.department = department;
+		this.password = password;
+		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
+		this.dateOfJoining = dateOfJoining;
+	}
+	
 	
 }
