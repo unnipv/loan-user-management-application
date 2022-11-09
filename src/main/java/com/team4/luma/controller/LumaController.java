@@ -68,6 +68,7 @@ public class LumaController {
 	@PostMapping("/applyforloan")
 	public ResponseEntity<String> applyforloan(@RequestBody ApplyLoanDto applyLoanDto){
 		try{
+			System.out.println(applyLoanDto);
 			loanService.applyForLoan(applyLoanDto);
 			return new ResponseEntity<String>("Loan sanctioned", null, 200);
 		}

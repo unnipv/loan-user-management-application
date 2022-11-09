@@ -58,8 +58,9 @@ public class LoanServiceImpl implements LoanService {
 //		ItemEntity item = itemRepo.getItemById(applyLoanDto.getItem_id());
 
 		Optional<EmployeeMasterEntity> employee = empRepo.findById(applyLoanDto.getEmployeeId());
-		Optional<LoanCardEntity> loan = loanRepo.findById(applyLoanDto.getLoan_id());
+		Optional<LoanCardEntity> loan = Optional.ofNullable(loanRepo.getLoansByItemCategory(applyLoanDto.getItem_category()));
 		Optional<ItemEntity> item = itemRepo.findById(applyLoanDto.getItem_id());
+		System.out.println(loan.get());
 		if(employee.isPresent() && item.isPresent() && loan.isPresent()) {
 
 			//working

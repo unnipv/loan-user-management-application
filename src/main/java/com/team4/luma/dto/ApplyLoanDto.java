@@ -3,7 +3,17 @@ package com.team4.luma.dto;
 public class ApplyLoanDto {
     private String employeeId;
     private Long item_id;
-    private Long loan_id;
+
+    private String item_category;
+
+    public String getItem_category() {
+        return item_category;
+    }
+
+    public void setItem_category(String item_category) {
+        this.item_category = item_category;
+    }
+
 
     public String getEmployeeId() {
         return employeeId;
@@ -21,17 +31,15 @@ public class ApplyLoanDto {
         this.item_id = item_id;
     }
 
-    public Long getLoan_id() {
-        return loan_id;
-    }
-
-    public void setLoan_id(Long loan_id) {
-        this.loan_id = loan_id;
-    }
-
 	public ApplyLoanDto() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "ApplyLoanDto [employeeId=" + employeeId + ", item_id=" + item_id + ", item_category=" + item_category
+				+ "]";
+	}
     
-    
+
 }

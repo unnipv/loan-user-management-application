@@ -13,7 +13,4 @@ import com.team4.luma.entity.EmployeeMasterEntity;
 public interface EmployeeRepository extends JpaRepository<EmployeeMasterEntity, String> {
 
 	Optional<EmployeeMasterEntity> findById(String employeeId);
-
-	@Query(nativeQuery = true, value= "SELECT * FROM EmployeeMasterEntity e WHERE e.employee_id = ?1")
-	EmployeeMasterEntity getEmployeeMasterById(String employee_id);
 }

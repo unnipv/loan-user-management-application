@@ -24,7 +24,4 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
 	@Query(nativeQuery = true,
 			value = "select A.issue_id, B.item_make, B.item_category, B.item_valuation, B.item_description From employee_issue_master A INNER JOIN item_master B ON A.item_id = B.item_id WHERE A.employee_id = ?1")
 	List<List<String>> getItemsByEmpId(String employeeId);
-
-	@Query(nativeQuery = true, value= "SELECT * FROM ItemEntity i WHERE i.item_id = ?1")
-	ItemEntity getItemById(Long item_id);
 }
