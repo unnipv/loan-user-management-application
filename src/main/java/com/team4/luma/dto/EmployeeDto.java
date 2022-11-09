@@ -75,6 +75,12 @@ public class EmployeeDto {
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;
 	}
+	@Override
+	public String toString() {
+		return "EmployeeDto [employeeId=" + employeeId + ", employeeName=" + employeeName + ", designation="
+				+ designation + ", department=" + department + ", password=" + password + ", gender=" + gender
+				+ ", dateOfBirth=" + dateOfBirth + ", dateOfJoining=" + dateOfJoining + "]";
+	}
 	
 	
 }

@@ -20,17 +20,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void registerUserToDb(EmployeeDto empDto) throws Exception {
 		Optional<EmployeeMasterEntity> employeeMaster = empRepo.findById(empDto.getEmployeeId());
 		System.out.println(empDto);
-		System.out.println(employeeMaster.get());
+//		System.out.println(employeeMaster.get());
 		if(employeeMaster.isPresent()) {
 			System.out.println("User with Empid already exists!");
 			throw new Exception("User with Empid already exists!");
+			
 		}
 		else {
 			EmployeeMasterEntity employee = EmployeeDtoConverter.getEmployeeEntity(empDto);
 			empRepo.save(employee);
 			empRepo.flush();
 		}
-		
 	}
 
 	@Override
